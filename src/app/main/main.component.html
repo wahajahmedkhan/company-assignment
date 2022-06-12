@@ -10,11 +10,14 @@
       alt="zivver_logo_white"/>
   </a>
 </div>
-<div class="ms-md-5 mt-3">
+<ng-container *ngIf="isUserLoading">
+  <div [appSpinnerLoader]="isUserLoading" class="loader-height"></div>
+</ng-container>
+<div class="ms-md-5 mt-3" *ngIf="!isUserLoading">
   <div class="row ms-4">
     <ng-container *ngFor="let user of users;trackBy: trackByFn; index as i">
       <div class="col-md-12 col-lg-1 ">
-        <app-card></app-card>
+        <app-card [user]="user"></app-card>
       </div>
       <div class="col-sm-0 col-md-2" *ngIf="cardPadding(i)"></div>
     </ng-container>

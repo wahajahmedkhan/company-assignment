@@ -19,8 +19,9 @@ export class SpinnerLoaderDirective {
     this.uid = 'loading-container-' + uuidv4();
     const componentRef = this.vcRef.createComponent(MatSpinner);
     const spinner: MatSpinner = componentRef.instance;
-    spinner.strokeWidth = 3;
-    spinner.diameter = 30;
+    spinner.strokeWidth = 5;
+    spinner.diameter = 50;
+    spinner.color = 'warn';
     const loadingContainer = this.renderer.createElement('div');
     this.disableField();
     this.renderer.setStyle(loadingContainer, 'display', this.appSpinnerLoader ? 'flex' : 'none');
@@ -31,7 +32,7 @@ export class SpinnerLoaderDirective {
     this.renderer.setStyle(loadingContainer, 'position', 'absolute');
     this.renderer.setStyle(loadingContainer, 'top', '0');
     this.renderer.setStyle(loadingContainer, 'left', '0');
-    this.renderer.setStyle(loadingContainer, 'background', '#FFFFFF');
+    this.renderer.setStyle(loadingContainer, 'background', '#001129');
     this.renderer.setStyle(loadingContainer, 'width', '100%');
     this.renderer.setStyle(loadingContainer, 'height', '100%');
     this.renderer.appendChild(loadingContainer, spinner._elementRef.nativeElement);

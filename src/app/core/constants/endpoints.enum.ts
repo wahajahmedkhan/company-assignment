@@ -1,4 +1,3 @@
 export enum Endpoints {
-  api = 'api',
-  user = 'user',
+  post = 'posts',
 }

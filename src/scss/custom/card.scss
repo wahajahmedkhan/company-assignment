@@ -85,6 +85,14 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   margin: -22px 0 6px 0px;
 }
 
+.custom-title-label {
+  white-space: nowrap;
+  width: 84px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: 26px;
+}
+
 
 @media only screen and (max-width: 992px) {
   .custom-card {
@@ -96,5 +104,12 @@ $returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
     margin: -110px 0 6px 0px;
   }
 
+  .custom-title-label {
+    white-space: nowrap;
+    width: 216px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 86px;
+  }
 }
 

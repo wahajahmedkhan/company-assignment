@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {delay, fromEvent, map, mapTo, repeat, share, switchMap, takeUntil} from 'rxjs';
+import {UserInterface} from '@app-core';
 
 @Component({
   selector: 'app-card',
@@ -12,8 +13,10 @@ export class CardComponent implements OnInit, AfterViewInit {
   mouseX = 0;
   mouseY = 0;
   @Input() cardBgImage: string = '';
+  @Input() user?: UserInterface;
   @ViewChild('card', {static: true}) card: ElementRef;
   cardStyling = this.cardStyle();
+  isShowingUserId = false;
 
   get mousePX(): number {
     return this.mouseX / this.width;

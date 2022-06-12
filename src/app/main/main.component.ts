@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {AuthService} from '@app-core';
+import {Component, OnInit} from '@angular/core';
+import {AuthService, UserInterface, UserService} from '@app-core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -7,10 +7,11 @@ import {Router} from '@angular/router';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent {
-  constructor(private authService: AuthService, private router: Router) {}
+export class MainComponent implements OnInit {
+  constructor(private authService: AuthService, private userService: UserService, private router: Router) {}
 
-  users = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 23, 4, 5, 6, 6, 7, 8, 9, 9, 1, 2, 2];
+  users: UserInterface[] = [];
+  isUserLoading = true;
 
   logoutAndGoBack() {
     this.authService.logOutUser();
@@ -21,7 +22,21 @@ export class MainComponent {
     return i % 10 === 9;
   }
 
-  trackByFn(index: number, user: number) {
-    return user;
+  trackByFn(index: number, user: UserInterface) {
+    return user.id;
+  }
+
+  ngOnInit(): void {
+    this.loadUsers().then();
+  }
+
+  async loadUsers(): Promise<void> {
+    this.isUserLoading = true;
+    try {
+      this.users = await this.userService.getUsers();
+    } catch (e) {
+      alert(e);
+    }
+    this.isUserLoading = false;
   }
 }
