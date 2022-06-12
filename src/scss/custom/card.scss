@@ -1,171 +1,100 @@
+@use "colors" as *;
 
-.center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-}
-
-.card {
-  width: 450px;
-  height: 250px;
-  background: #fff linear-gradient(#f8f8f8, #fff);
-  box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.4);
-  border-radius: 6px;
-  overflow: hidden;
-  position: relative;
-  margin: 1.5rem;
-}
-
-.card h1 {
-  text-align: center;
-}
-
-.card .additional {
-  position: absolute;
-  width: 150px;
-  height: 100%;
-  background: linear-gradient(#dE685E, #EE786E);
-  transition: width 0.4s;
-  overflow: hidden;
-  z-index: 2;
-}
-
-.card.green .additional {
-  background: linear-gradient(#92bCa6, #A2CCB6);
-}
-
-
-.card:hover .additional {
-  width: 100%;
-  border-radius: 0 5px 5px 0;
-}
-
-.card .additional .user-card {
-  width: 150px;
-  height: 100%;
-  position: relative;
-  float: left;
-}
-
-.card .additional .user-card::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 10%;
-  right: -2px;
-  height: 80%;
-  border-left: 2px solid rgba(0, 0, 0, 0.025);
-}
-
-.card .additional .user-card .level,
-.card .additional .user-card .points {
-  top: 15%;
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 0.75em;
-  font-weight: bold;
-  background: rgba(0, 0, 0, 0.15);
-  padding: 0.125rem 0.75rem;
-  border-radius: 100px;
-  white-space: nowrap;
-}
-
-.card .additional .user-card .points {
-  top: 85%;
-}
-
-.card .additional .user-card svg {
-  top: 50%;
-}
-
-.card .additional .more-info {
-  width: 300px;
-  float: left;
-  position: absolute;
-  left: 150px;
-  height: 100%;
-}
-
-.card .additional .more-info h1 {
-  color: #fff;
-  margin-bottom: 0;
-}
-
-.card.green .additional .more-info h1 {
-  color: #224C36;
-}
-
-.card .additional .coords {
-  margin: 0 1rem;
-  color: #fff;
-  font-size: 1rem;
-}
-
-.card.green .additional .coords {
-  color: #325C46;
-}
-
-.card .additional .coords span + span {
-  float: right;
-}
-
-.card .additional .stats {
-  font-size: 2rem;
+$hoverEasing: cubic-bezier(0.23, 1, 0.32, 1);
+$returnEasing: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+:host {
   display: flex;
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  right: 1rem;
-  top: auto;
-  color: #fff;
 }
 
-.card.green .additional .stats {
-  color: #325C46;
+.custom-card-wrap {
+  margin: 10px;
+  transform: perspective(800px);
+  transform-style: preserve-3d;
+  cursor: pointer;
+  width: 240px;
+
+  &:hover {
+    .card-info {
+      transform: translateY(0);
+    }
+
+    .card-info p {
+      opacity: 1;
+    }
+
+    .card-info, .card-info p {
+      transition: 0.6s $hoverEasing;
+    }
+
+    .card-info:after {
+      transition: 5s $hoverEasing;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .custom-card-bg {
+      transition: 0.6s $hoverEasing,
+      opacity 5s $hoverEasing;
+      opacity: 0.8;
+    }
+
+    .custom-card {
+      transition: 0.6s $hoverEasing,
+      box-shadow 2s $hoverEasing;
+      box-shadow: rgba($color-white, 0.2) 0 0 40px 5px,
+      rgba(#ff4f81, 1) 0 0 0 1px,
+      rgba($color-dark-blue, 0.66) 0 30px 30px 0,
+      none,
+      none;
+    }
+  }
 }
 
-.card .additional .stats > div {
-  flex: 1;
-  text-align: center;
+.custom-card {
+  // position: relative;
+  flex: 0 0 240px;
+  width: 6rem;
+  height: 13rem;
+  background-color: #ffffff;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: rgba(black, 0.66) 0 30px 30px 0,
+  inset #424242 0 0 0 0,
+  inset rgba(#ff4f81, 0.5) 0 0 0 0;
+  transition: 1s $returnEasing;
 }
 
-.card .additional .stats i {
-  display: block;
-}
-
-.card .additional .stats div.title {
-  font-size: 0.75rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.card .additional .stats div.value {
-  font-size: 1.5rem;
-  font-weight: bold;
-  line-height: 1.5rem;
-}
-
-.card .additional .stats div.value.infinity {
-  font-size: 2.5rem;
-}
-
-.card .general {
-  width: 300px;
+.custom-card-bg {
+  width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 1;
-  box-sizing: border-box;
-  padding: 0 1rem 1rem;
+  display: flex;
+  transition: 1s $returnEasing,
+  opacity 5s 1s $returnEasing;
+  pointer-events: none;
+  vertical-align: middle;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-around;
 }
 
-.card .general .more {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  font-size: 0.9em;
+
+.custom-card-img {
+  width: 140px;
+  margin: -22px 0 6px 0px;
 }
 
+
+@media only screen and (max-width: 992px) {
+  .custom-card {
+    height: 28rem;
+    width: 100%;
+  }
+  .custom-card-img {
+    width: 377px;
+    margin: -110px 0 6px 0px;
+  }
+
+}
 

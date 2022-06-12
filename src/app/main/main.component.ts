@@ -20,4 +20,8 @@ export class MainComponent {
   cardPadding(i: number): boolean {
     return i % 10 === 9;
   }
+
+  trackByFn(index: number, user: number) {
+    return user;
+  }
 }
