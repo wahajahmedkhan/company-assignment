@@ -8,20 +8,22 @@ import {UserInterface} from '@app-core';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit, AfterViewInit {
-  private height = 0;
-  private width = 0;
-  private mouseX = 0;
-  private mouseY = 0;
+  private config = {
+    height: 0,
+    width: 0,
+    mouseX: 0,
+    mouseY: 0,
+  };
   @ViewChild('card', {static: true}) private card: ElementRef;
   @Input() user?: UserInterface;
   isShowingUserId = false;
 
   get mousePX(): number {
-    return this.mouseX / this.width;
+    return this.config.mouseX / this.config.width;
   }
 
   get mousePY(): number {
-    return this.mouseY / this.height;
+    return this.config.mouseY / this.config.height;
   }
 
   get nativeElement(): HTMLElement {
@@ -49,20 +51,20 @@ export class CardComponent implements OnInit, AfterViewInit {
       .pipe(
         switchMap(() => mouseMove$),
         map((e: any) => ({
-          mouseX: e.pageX - this.nativeElement.offsetLeft - this.width / 2,
-          mouseY: e.pageY - this.nativeElement.offsetTop - this.height / 2,
+          mouseX: e.pageX - this.nativeElement.offsetLeft - this.config.width / 2,
+          mouseY: e.pageY - this.nativeElement.offsetTop - this.config.height / 2,
         })),
         repeat()
       )
       .subscribe((e: any) => {
-        this.mouseX = e.mouseX;
-        this.mouseY = e.mouseY;
+        this.config.mouseX = e.mouseX;
+        this.config.mouseY = e.mouseY;
       });
   }
 
   ngAfterViewInit(): void {
-    this.width = this.card.nativeElement.offsetWidth;
-    this.height = this.card.nativeElement.offsetHeight;
+    this.config.width = this.card.nativeElement.offsetWidth;
+    this.config.height = this.card.nativeElement.offsetHeight;
   }
 
   private transformStyle(): {transform: string} {
