@@ -38,8 +38,7 @@ export class MainComponent implements OnInit {
       finalize(() => (this.isUserLoading = false)),
       catchError((err: HttpErrorResponse) =>
         throwError(() => {
-          alert(`status:${err.status}\n
-          message:'${err.message}'`);
+          alert(`status:${err.status}\nmessage:'${err.message}'`);
           throw err;
         })
       )
