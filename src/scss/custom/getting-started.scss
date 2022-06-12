@@ -1,0 +1,132 @@
+@use 'fonts' as *;
+@use 'colors' as *;
+
+.bg-getting-started {
+  background: url(../../assets/images/illustration-bg.png) center/auto 90% no-repeat, center/cover no-repeat $color-dark-blue;
+}
+
+.bg-getting-started-boxes {
+  background: $color-white;
+  border-radius: 20px;
+  padding: 35px 75px;
+  margin: 0 15px;
+  min-height: 450px;
+}
+
+.getting-started-logo {
+  width: 260px;
+  filter: invert(1);
+}
+
+.getting-started-btn {
+  width: auto;
+  min-width: 35%;
+  height: 30px;
+  font-size: $font16;
+  color: $color-dark-blue;
+  border-radius: 20px;
+  padding-top: 2px;
+  background: $color-voilet;
+  transition: 0.5s ease-out;
+  border: none;
+}
+
+.getting-started-btn:hover:not(:disabled) {
+  color: $color-voilet;
+  background-color: $color-dark-blue;
+  background-position: left;
+}
+
+.getting-started-btn[disabled],
+.getting-started-btn[disabled]:hover {
+  background: $color-dark-grey;
+  color: $color-white;
+  border: none;
+  cursor: not-allowed;
+}
+
+@media only screen and (max-width: 767px) {
+  .getting-started-btn[disabled] {
+    width: 90%;
+    height: 34px;
+  }
+
+  .getting-started-btn {
+    width: 90%;
+    height: 34px;
+    color: $color-white;
+    background: $color-orange;
+    border: 2px solid $color-orange;
+    background-size: 205%;
+    transition: 0.5s ease-out;
+  }
+
+  .getting-started-btn:hover:not(:disabled) {
+    color: $color-orange;
+    background-color: $color-white;
+    background-position: left;
+  }
+
+  .bg-getting-started-boxes {
+    padding: 15px 15px;
+    border-radius: 0;
+    margin: 0;
+    min-height: 400px;
+  }
+}
+
+.logo-text {
+  font-weight: bold;
+  font-size: $font24;
+  text-align: center;
+  color: $color-white;
+  line-height: 35px;
+  margin: 0;
+}
+
+.getting-started-heading {
+  font-size: $font24;
+  line-height: 1.2;
+  text-align: center;
+  font-weight: bold;
+}
+
+img.eye_icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.text-bottom {
+  background: $color-dark-blue;
+  font-size: 14px;
+  line-height: 21px;
+  color: #fff;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.text-bottom a,
+.text-bottom a:hover,
+.text-bottom a:focus,
+.text-bottom a:active {
+  color: $color-white;
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 767px) {
+  .text-bottom {
+    background: $color-voilet;
+    color: $color-blue;
+    margin: 0;
+    padding: 15px;
+  }
+
+  .text-bottom a,
+  .text-bottom a:hover,
+  .text-bottom a:focus,
+  .text-bottom a:active {
+    color: $color-blue;
+  }
+}
