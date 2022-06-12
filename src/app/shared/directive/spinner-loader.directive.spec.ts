@@ -19,5 +19,4 @@ describe('SpinnerLoaderDirective', () => {
   it('should create an instance', () => {
     expect(spinnerDirective).toBeTruthy();
   });
-
 });

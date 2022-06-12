@@ -8,7 +8,7 @@ const config = {
     },
   },
   moduleNameMapper: {
-    "@app-core(.*)": "<rootDir>/src/app/core/$1"
+    '@app-core(.*)': '<rootDir>/src/app/core/$1',
   },
   moduleDirectories: ['node_modules', '.'],
 };

@@ -2,7 +2,8 @@
 @use 'colors' as *;
 
 .bg-getting-started {
-  background: url(../../assets/images/illustration-bg.png) center/auto 90% no-repeat, center/cover no-repeat $color-dark-blue;
+  background: url(../../assets/images/illustration-bg.png) center/auto 90% no-repeat,
+    center/cover no-repeat $color-dark-blue;
 }
 
 .bg-getting-started-boxes {
