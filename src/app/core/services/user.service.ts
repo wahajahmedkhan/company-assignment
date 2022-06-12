@@ -20,8 +20,10 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  loadUsers(): void {
-    this.isUserLoading = true;
+  loadUsers(update?: boolean): void {
+    if (!update) {
+      this.isUserLoading = true;
+    }
     this.users = this.getUsers().pipe(
       finalize(() => (this.isUserLoading = false)),
       catchError((err: HttpErrorResponse) =>

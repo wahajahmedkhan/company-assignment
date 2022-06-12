@@ -26,6 +26,8 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     if (this.userService.isUserLoading) {
       this.userService.loadUsers();
+    } else {
+      this.userService.loadUsers(true);
     }
   }
 }
