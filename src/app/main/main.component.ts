@@ -34,8 +34,8 @@ export class MainComponent implements OnInit {
     this.isUserLoading = true;
     try {
       this.users = await this.userService.getUsers();
-    } catch (e) {
-      alert(e);
+    } catch (e: any) {
+      alert(`status:${e.status}\nmessage:'${e.message}'`);
     }
     this.isUserLoading = false;
   }
