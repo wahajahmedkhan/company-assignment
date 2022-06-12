@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "zivver-assignment": {
+      "hosting": {
+        "frontend": [
+          "zivver-assignment"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "zivver-assignment"
+  }
+}
