@@ -13,7 +13,7 @@ export class MainComponent implements OnInit {
   users: UserInterface[] = [];
   isUserLoading = true;
 
-  logoutAndGoBack() {
+  logoutAndGoBack(): void {
     this.authService.logOutUser();
     this.router.navigate(['/getting-started']).then();
   }

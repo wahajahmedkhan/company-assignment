@@ -1,11 +1,21 @@
-import {Directive, ElementRef, HostBinding, Input, Renderer2, SimpleChanges, ViewContainerRef} from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  HostBinding,
+  Input,
+  OnChanges,
+  OnInit,
+  Renderer2,
+  SimpleChanges,
+  ViewContainerRef,
+} from '@angular/core';
 import {MatSpinner} from '@angular/material/progress-spinner';
 import {uuidv4} from 'src/app/core/helpers/uuid4-maker';
 
 @Directive({
   selector: '[appSpinnerLoader]',
 })
-export class SpinnerLoaderDirective {
+export class SpinnerLoaderDirective implements OnInit, OnChanges {
   @HostBinding('style.position')
   hostPosition = 'relative';
 

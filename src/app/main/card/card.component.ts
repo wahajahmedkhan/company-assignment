@@ -8,14 +8,12 @@ import {UserInterface} from '@app-core';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit, AfterViewInit {
-  height = 0;
-  width = 0;
-  mouseX = 0;
-  mouseY = 0;
-  @Input() cardBgImage: string = '';
+  private height = 0;
+  private width = 0;
+  private mouseX = 0;
+  private mouseY = 0;
+  @ViewChild('card', {static: true}) private card: ElementRef;
   @Input() user?: UserInterface;
-  @ViewChild('card', {static: true}) card: ElementRef;
-  cardStyling = this.cardStyle();
   isShowingUserId = false;
 
   get mousePX(): number {
@@ -26,22 +24,16 @@ export class CardComponent implements OnInit, AfterViewInit {
     return this.mouseY / this.height;
   }
 
+  get nativeElement(): HTMLElement {
+    return this.card.nativeElement;
+  }
+
   cardStyle(): {transform: string} {
     return this.transformStyle();
   }
 
   cardBgTransform(): {transform: string} {
     return this.transformStyle();
-  }
-
-  private transformStyle(): {transform: string} {
-    const tX = this.mousePX * -50;
-    const tY = this.mousePY * -30;
-    return {transform: `rotateY(${tX}deg) rotateX(${tY}deg)`};
-  }
-
-  get nativeElement(): HTMLElement {
-    return this.card.nativeElement;
   }
 
   ngOnInit(): void {
@@ -71,5 +63,11 @@ export class CardComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.width = this.card.nativeElement.offsetWidth;
     this.height = this.card.nativeElement.offsetHeight;
+  }
+
+  private transformStyle(): {transform: string} {
+    const tX = this.mousePX * -50;
+    const tY = this.mousePY * -30;
+    return {transform: `rotateY(${tX}deg) rotateX(${tY}deg)`};
   }
 }
