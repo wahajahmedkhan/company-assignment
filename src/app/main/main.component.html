@@ -7,15 +7,15 @@
       src="https://d27i7n2isjbnbi.cloudfront.net/careers/photos/251160/thumb_photo_1638991377.png"
       data-test="getting-started-logo"
       class="main-started-logo mt-2"
-      alt="zivver_logo_white" />
+      alt="zivver_logo_white"/>
   </a>
 </div>
 <ng-container *ngIf="isUserLoading">
   <div [appSpinnerLoader]="isUserLoading" class="loader-height"></div>
 </ng-container>
-<div class="ms-md-5 mt-3" *ngIf="!isUserLoading">
+<div class="ms-md-5 mt-3">
   <div class="row ms-4">
-    <ng-container *ngFor="let user of users; trackBy: trackByFn; index as i">
+    <ng-container *ngFor="let user of(users|async); trackBy: trackByFn; index as i">
       <div class="col-md-12 col-lg-1">
         <app-card [user]="user"></app-card>
       </div>

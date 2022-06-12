@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService, UserInterface, UserService} from '@app-core';
 import {Router} from '@angular/router';
+import {catchError, finalize, Observable, throwError} from 'rxjs';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-main',
@@ -10,7 +12,7 @@ import {Router} from '@angular/router';
 export class MainComponent implements OnInit {
   constructor(private authService: AuthService, private userService: UserService, private router: Router) {}
 
-  users: UserInterface[] = [];
+  users?: Observable<UserInterface[]>;
   isUserLoading = true;
 
   logoutAndGoBack(): void {
@@ -27,16 +29,20 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadUsers().then();
+    this.loadUsers();
   }
 
-  async loadUsers(): Promise<void> {
+  loadUsers(): void {
     this.isUserLoading = true;
-    try {
-      this.users = await this.userService.getUsers();
-    } catch (e) {
-      alert(e);
-    }
-    this.isUserLoading = false;
+    this.users = this.userService.getUsers().pipe(
+      finalize(() => (this.isUserLoading = false)),
+      catchError((err: HttpErrorResponse) =>
+        throwError(() => {
+          alert(`status:${err.status}\n
+          message:'${err.message}'`);
+          throw err;
+        })
+      )
+    );
   }
 }

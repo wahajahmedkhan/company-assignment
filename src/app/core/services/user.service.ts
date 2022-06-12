@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {lastValueFrom} from 'rxjs';
+import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {pathMaker} from '../helpers/path-maker';
 import {Endpoints} from '../constants/endpoints.enum';
@@ -18,7 +18,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Promise<UserInterface[]> {
-    return lastValueFrom(this.http.get<UserInterface[]>(this.endPoints.users));
+  getUsers(): Observable<UserInterface[]> {
+    return this.http.get<UserInterface[]>(this.endPoints.users);
   }
 }

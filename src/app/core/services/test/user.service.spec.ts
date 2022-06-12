@@ -1,6 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {UserService} from '@app-core';
+import {lastValueFrom} from 'rxjs';
 
 describe('UserService', () => {
   let service: UserService;
@@ -28,7 +29,7 @@ describe('UserService', () => {
 
   it('should call GET method when getCountries() is called', async () => {
     const method = jest.spyOn(service, 'getUsers');
-    const res = await Promise.all([service.getUsers(), apiMocker('GET', service.endPoints.users, [])]);
+    const res = await Promise.all([lastValueFrom(service.getUsers()), apiMocker('GET', service.endPoints.users, [])]);
     expect(res[0]).toEqual([]);
     expect(method).toBeCalled();
   });
