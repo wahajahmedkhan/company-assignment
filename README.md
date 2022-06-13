@@ -1,8 +1,8 @@
 ﻿# COMPANY ASSIGNMENT
 
-At first, I would like to thank company for this opportunity. I hope to meet company’s expectations. I have completed
-the assignment both ways, using Async/Await syntax and using RxJs. Although it wasn’t required, I still have written
-some unit test and have deployed it to firebase. I have attached the app link down below
+First, I would like to thank the company for this opportunity. I hope to meet the company’s expectations. I have
+completed the assignment both ways, using Async/Await syntax and using RxJs. Although it wasn’t required, I still have
+written some unit tests and have deployed the App to firebase. I have attached the app link down below
 
 ## INSTRUCTION
 
