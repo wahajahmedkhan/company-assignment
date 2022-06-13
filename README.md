@@ -22,15 +22,16 @@ After cloning the project run npm install, to install the dependencies.
 ## BRANCHES
 
 1. using-rxjs
-  1. Observables
-  2. Async Pipe
-  3. Catcherror
-  4. Throwerror
-  5. Finalize
-  6. using-async-await
-2. Async functions
-  1. Await promises
-  2. Lastvaluefrom
+  - Observables
+  - Async Pipe
+  - Catcherror
+  - Throwerror
+  - Finalize
+
+2. using-async-await
+  - Async functions
+  - Await promises
+  - Lastvaluefrom
 
 ## COVERAGE
 
@@ -45,21 +46,21 @@ view, but when you don't know the private key, you can't change it.Where the rec
 won't match anymore.
 
 1. Pros
-  1. **No Database Table:** Lower Db Queries, no need to store it in the Database.
-  2. **Simpler to use if careful:** Development using JWT for security is comparatively faster.
-  3. **Used across services:** one authorization server that deals with the Login/Registration and generates the token,
-     all the subsequent requests will need not have to go to the authorization server as only the auth-server has access
-     to the private key, the rest of the servers are given the public key to verify the signature
+1. **No Database Table:** Lower Db Queries, no need to store it in the Database.
+2. **Simpler to use if careful:** Development using JWT for security is comparatively faster.
+3. **Used across services:** one authorization server that deals with the Login/Registration and generates the token,
+   all the subsequent requests will need not have to go to the authorization server as only the auth-server has access
+   to the private key, the rest of the servers are given the public key to verify the signature
 2. Cons
-  1. **Compromised Secret Key:** if the key is leaked by a developer/administrator, the whole system is at risk.
-  2. **Cannot manage clients from the server:** ​​If a user’s mobile is stolen, and he wants to logout of all existing
-     sessions(e.g. Gmail’s logout other sessions feature). Well it's not possible in the case of JWT.
-  3. **Cannot push Messages to clients:** As we have no record about the logged-in clients on the DB end, we cannot push
-     messages to all the clients.
-  4. **Data Overhead:** The JWT token is larger in size in comparison to a normal session token. The JWT token gets
-     longer linearly as more data is added
-  5. **Complicated to understand:** Cryptographic signature algorithms are used by JWT in order to confirm the data and
-     receive the user-id from the token.Understanding the Signing Algo in itself requires basics of cryptography.
+1. **Compromised Secret Key:** if the key is leaked by a developer/administrator, the whole system is at risk.
+2. **Cannot manage clients from the server:** ​​If a user’s mobile is stolen, and he wants to logout of all existing
+   sessions(e.g. Gmail’s logout other sessions feature). Well it's not possible in the case of JWT.
+3. **Cannot push Messages to clients:** As we have no record about the logged-in clients on the DB end, we cannot push
+   messages to all the clients.
+4. **Data Overhead:** The JWT token is larger in size in comparison to a normal session token. The JWT token gets longer
+   linearly as more data is added
+5. **Complicated to understand:** Cryptographic signature algorithms are used by JWT in order to confirm the data and
+   receive the user-id from the token.Understanding the Signing Algo in itself requires basics of cryptography.
 
 ##### 2. In our web-application, messages sent from one user to another, can contain HTML, which poses some security risks. Describe two attack vectors bad actors might try to abuse? And how would you mitigate these vectors?
 
