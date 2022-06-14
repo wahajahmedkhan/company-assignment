@@ -68,7 +68,7 @@ export class CardComponent implements OnInit, AfterViewInit {
   }
 
   private transformStyle(): {transform: string} {
-    const tX = this.mousePX * -50;
+    const tX = this.mousePX * 50;
     const tY = this.mousePY * -30;
     return {transform: `rotateY(${tX}deg) rotateX(${tY}deg)`};
   }

@@ -1,9 +1,9 @@
 <div class="ms-lg-5 d-flex justify-content-center" (click)="isShowingUserId = !isShowingUserId">
   <div #card class="custom-card-wrap ms-lg-5">
-    <div class="custom-card" [ngStyle]="cardStyle()">
+    <div class="custom-card" matRipple [ngStyle]="cardStyle()">
       <div class="custom-card-bg" [ngStyle]="cardBgTransform()">
         <div>
-          <img class="custom-card-img" src="assets/images/img_avatar.png" alt="Avatar" />
+          <img class="custom-card-img" src="assets/images/img_avatar.png" alt="Avatar"/>
           <div class="text-center">
             <div class="custom-title-label">
               <p>{{ user?.title }}</p>
@@ -13,8 +13,8 @@
               [matBadge]="isShowingUserId ? user?.userId : user?.id"
               [matBadgeColor]="isShowingUserId ? 'warn' : 'primary'"
               matBadgeOverlap="false"
-              >{{ isShowingUserId ? 'userId' : 'id' }}</span
-            ><br />
+            >{{ isShowingUserId ? 'userId' : 'id' }}</span
+            ><br/>
           </div>
         </div>
       </div>
